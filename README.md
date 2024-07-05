@@ -89,11 +89,14 @@ git clone https://github.com/seL4/musllibc.git projects/musllibc
 # Clone util_libs repo into projects/util_libs
 git clone https://github.com/seL4/util_libs.git projects/util_libs
 
+# Clone sel4runtime repo into projects/sel4runtime
+git clone https://github.com/seL4/sel4runtime.git projects/sel4runtime
+
 # seL4_tools contains an usefull script : 'init-build.sh'. Let's sym-link it in our root directory.
 ln -s tools/cmake-tool/init-build.sh init-build.sh
 
 ```
-All files required for the project are put into the `hello` directory. First of
+All files required for the project's custom code are put into the `hello` directory. First of
 all lets create a simple source file that just prints the "Hello World"
 message. File is located in the
 [projects/hello/src/](https://github.com/mskordal/SeL4-hello-world/blob/main/projects/hello/src/)
@@ -144,13 +147,13 @@ For `CMakeLists.txt` we make a somewhat hybrid version:
  
 We put all three files at the
 [projects/hello/](https://github.com/mskordal/SeL4-hello-world/blob/main/projects/hello/)
-path since that's where they are looked for. The last thing we need to do is to
-create a symbolic link to `easy-settings.cmake` in the root directory, since
+path since that's where they are looked for. You can find these files readily available in this repository. The last thing we need to do is to
+create a symbolic link from hello folders `easy-settings.cmake` in to the root directory, since
 `init-build.sh` requires it:
 ```bash
 ln -s projects/hello/easy-settings.cmake easy-settings.cmake
 ```
-Finally to build and run the project, we run the following:
+Finally to build and run the project from the root's build directory with the following:
 ```bash
 # create a build directory and enter
 mkdir build && cd build
