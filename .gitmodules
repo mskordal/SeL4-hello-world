@@ -1,0 +1,18 @@
+[submodule "tools"]
+	path = tools
+	url = git@github.com:seL4/seL4_tools.git
+[submodule "projects/seL4_libs"]
+	path = projects/seL4_libs
+	url = git@github.com:seL4/seL4_libs.git
+[submodule "projects/musllibc"]
+	path = projects/musllibc
+	url = git@github.com:seL4/musllibc.git
+[submodule "projects/util_libs"]
+	path = projects/util_libs
+	url = git@github.com:seL4/util_libs.git
+[submodule "projects/sel4runtime"]
+	path = projects/sel4runtime
+	url = git@github.com:seL4/sel4runtime.git
+[submodule "kernel"]
+	path = kernel
+	url = git@github.com:seL4/seL4.git

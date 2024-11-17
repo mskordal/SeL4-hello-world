@@ -71,27 +71,12 @@ user application is built for SeL4. In this case I named our application
 # Downloading, Building and running the project
 
 ```bash
-# SeL4 must be inside a directory named 'kernel'
-git clone https://github.com/seL4/seL4.git kernel
-
-# The SeL4 tools must be inside a directroy named 'tools'
-git clone https://github.com/seL4/seL4_tools.git tools
-
-# Create 'projects' folder
-mkdir projects
-
-# Clone seL4_libs repo into projects/seL4_libs
-git clone https://github.com/seL4/seL4_libs.git projects/seL4_libs
-
-# Clone the musl libc into projects/musllibc
-git clone https://github.com/seL4/musllibc.git projects/musllibc
-
-# Clone util_libs repo into projects/util_libs
-git clone https://github.com/seL4/util_libs.git projects/util_libs
-
-# seL4_tools contains an usefull script : 'init-build.sh'. Let's sym-link it in our root directory.
-ln -s tools/cmake-tool/init-build.sh init-build.sh
-
+# git submodules are used to get all the required repos, but are not checked out
+# by default, except if you used git clone --recurse-submodules.
+git submodule init
+git submodule update
+# Submodules are at a specific commit, to get the latest of everything do:
+git submodule update --remote
 ```
 All files required for the project are put into the `hello` directory. First of
 all lets create a simple source file that just prints the "Hello World"
@@ -144,12 +129,9 @@ For `CMakeLists.txt` we make a somewhat hybrid version:
  
 We put all three files at the
 [projects/hello/](https://github.com/mskordal/SeL4-hello-world/blob/main/projects/hello/)
-path since that's where they are looked for. The last thing we need to do is to
-create a symbolic link to `easy-settings.cmake` in the root directory, since
-`init-build.sh` requires it:
-```bash
-ln -s projects/hello/easy-settings.cmake easy-settings.cmake
-```
+path since that's where they are looked for. The last thing we need is a symbolic link
+to `easy-settings.cmake` in the root directory, since `init-build.sh` requires it.
+
 Finally to build and run the project, we run the following:
 ```bash
 # create a build directory and enter

@@ -1,7 +1,9 @@
 #include <stdio.h>
 
-int main(void)
+void main(void)
 {
     printf("Hello World!\n");
-    return 0;
+
+    /* There is nothing to return to: */
+    while(1);
 }
